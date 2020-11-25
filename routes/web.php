@@ -44,6 +44,7 @@ Route::prefix('User')->group(function(){
     Route::get('edit/{id}','UserController@edit')->name('User.edit');
     Route::put('update','UserController@update')->name('User.update');
 });
+//Test
 Route::prefix('Banner')->group(function(){
     Route::get('/','BannerController@index')->name('Banner./');
     Route::get('index','BannerController@index')->name('Banner.index');
