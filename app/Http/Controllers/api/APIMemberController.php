@@ -52,6 +52,17 @@ class APIMemberController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        $Member = MemBer::create($data);
+        if($Member){
+            echo json_encode([
+                'Sigup'=>"success"
+            ]);
+        }else{
+            echo json_encode(
+                ['Sigup'=>'fail']
+            );
+        }
     }
 
     /**
