@@ -6,7 +6,7 @@
 
     <div class="form-group">
       <label for="formGroupExampleInput">Tài khoản </label>
-      <input type="text" class="form-control" name="Usermember" id="formGroupExampleInput" placeholder="">
+      <input type="text" class="form-control" name="Usemember" id="formGroupExampleInput" placeholder="">
     </div>
 
     <div class="form-group">

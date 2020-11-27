@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class MemBer extends Model
 {
     //
-    protected $guard = 'members';
     
     protected $table = "mem_bers";
     
-    protected $fillable = ['Usermember','Password', 'Email', 'Fullname'];
+    protected $fillable = ['Usemember','Password', 'Email', 'Fullname'];
 }

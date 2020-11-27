@@ -46,21 +46,24 @@ class APIMemberController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+    {
+        
+    }
+    public function SingUp(Request $request)
     {
         //
         $data = $request->all();
         $Member = MemBer::create($data);
         if($Member){
             echo json_encode([
-                'Sigup'=>"success"
+                'Singup'=>"success"
             ]);
         }else{
             echo json_encode(
-                ['Sigup'=>'fail']
+                ['Singup'=>'fail']
             );
         }
     }
