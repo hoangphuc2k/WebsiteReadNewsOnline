@@ -33,7 +33,8 @@ Route::prefix('Category')->group(function(){
     Route::post('store','CategoryController@store')->name('Category.store');
     Route::get('show/{id}','CategoryController@show')->name('Category.show');
     Route::get('edit/{id}','CategoryController@edit')->name('Category.edit');
-    Route::put('update','CategoryController@update')->name('Category.update');
+    Route::PATCH('update/{id}','CategoryController@update')->name('Category.update');
+    Route::DELETE('delete/{id}','CategoryController@destroy')->name('Category.delete');
 });
 Route::prefix('User')->group(function(){
     Route::get('/','UserController@index')->name('User./');
@@ -42,7 +43,7 @@ Route::prefix('User')->group(function(){
     Route::post('store','UserController@store')->name('User.store');
     Route::get('show/{id}','UserController@show')->name('User.show');
     Route::get('edit/{id}','UserController@edit')->name('User.edit');
-    Route::put('update','UserController@update')->name('User.update');
+    Route::put('update/','UserController@update')->name('User.update');
 });
 Route::prefix('Banner')->group(function(){
     Route::get('/','BannerController@index')->name('Banner./');

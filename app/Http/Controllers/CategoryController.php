@@ -21,7 +21,7 @@ class CategoryController extends Controller
     {
         //
         $ListCategory['Data'] = Category::where('Status','=','Yes')->get();
-        return view('allCategory',$ListCategory);
+        return view('Category.allCategory',$ListCategory);
     }
 
     /**
@@ -32,7 +32,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view('addCategory');
+        return view('Category.addCategory');
     }
 
     /**
@@ -46,7 +46,7 @@ class CategoryController extends Controller
         //
         $data = $request->all();
         $category = Category::create($data);
-        return redirect()->route('Category.index');
+        return response()->json(['data'=>$category],200);
     }
 
     /**
@@ -68,7 +68,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ListCate = Category::where('CateId','=',$id)->where('Status','=','Yes')->get();
+        return response()->json(['data'=>$ListCate],200);
     }
 
     /**
@@ -78,9 +79,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
         //
+        $ListCate = Category::where('CateId','=',$id)->update(['CateName'=>$request->CateName]);
+        return response()->json(['data'=>$ListCate],200);   
     }
 
     /**
@@ -91,6 +94,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ListCate = Category::where('CateId','=',$id)->update(['Status'=>'No']);
     }
 }
