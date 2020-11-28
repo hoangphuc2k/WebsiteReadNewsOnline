@@ -58,6 +58,8 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
+        $ListCate = Category::where('CateId','=',$id)->where('Status','=','Yes')->get();
+        return response()->json(['data'=>$ListCate],200);
     }
 
     /**
@@ -95,5 +97,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $ListCate = Category::where('CateId','=',$id)->update(['Status'=>'No']);
+        return response()->json(['data'=>'removed'],200);
     }
 }

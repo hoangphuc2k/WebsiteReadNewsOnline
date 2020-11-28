@@ -19,7 +19,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-success">Thêm</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
       </div>
     </form>
     </div>

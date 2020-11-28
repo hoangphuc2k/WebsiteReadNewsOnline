@@ -52,10 +52,9 @@
                             @if (Auth::user()->RoleCode_FK == 1)
                                 
                             <li class="left__menuItem">
-                                <div class="left__title"><img src="../assets/icon-edit.svg" alt="">Chủ Đề<img class="left__iconDown" src="../assets/arrow-down.svg" alt=""></div>
+                                <div class="left__title"><img src="../assets/icon-edit.svg" alt="">Chuyên Mục<img class="left__iconDown" src="../assets/arrow-down.svg" alt=""></div>
                                 <div class="left__text">
-                                    <a class="left__link" href="{{route('Category.index')}}">Tất Cả Chủ Đề</a>
-                                    <a class="left__link" href="{{route('Category.create')}}">Thêm Chủ Đề</a>
+                                    <a class="left__link" href="{{route('Category.index')}}">Quản Lí Chuyên Mục</a>
                                 </div>
                             </li>
                             <li class="left__menuItem">
@@ -101,6 +100,30 @@
                 {{--  --}}
                 <div class="right">
                     <div class="right__content">
+                        <div class="right__title">Báo Mới 404</div>
+                            <p class="right__desc">Bảng điều khiển</p>
+                            <div class="right__cards">
+                                <a class="right__card" href="{{URL::to('allpost')}}">
+                                    <div class="right__cardTitle">Tất Cả Bài Viết</div>
+                                    <div class="right__cardNumber">72</div>
+                                    <div class="right__cardDesc">Xem Chi Tiết <img src="assets/arrow-right.svg" alt=""></div>
+                                </a>
+                                <a class="right__card" href="{{URL::to('alltag')}}">
+                                    <div class="right__cardTitle">Chuyên Mục</div>
+                                    <div class="right__cardNumber">12</div>
+                                    <div class="right__cardDesc">Xem Chi Tiết <img src="assets/arrow-right.svg" alt=""></div>
+                                </a>
+                                <a class="right__card" href="{{URL::to('allpost')}}">
+                                    <div class="right__cardTitle">Bình Luận</div>
+                                    <div class="right__cardNumber">4</div>
+                                    <div class="right__cardDesc">Xem Chi Tiết <img src="assets/arrow-right.svg" alt=""></div>
+                                </a>
+                                <a class="right__card" href="{{URL::to('allpost')}}">
+                                    <div class="right__cardTitle">Duyệt Bài</div>
+                                    <div class="right__cardNumber">72</div>
+                                    <div class="right__cardDesc">Xem Chi Tiết <img src="assets/arrow-right.svg" alt=""></div>
+                                </a>
+                            </div>
                 @section('content')
                     @show
                 </div>

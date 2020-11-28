@@ -1,21 +1,22 @@
 @extends('layout.menu_layout')
 @section('content')
-<a href="" class="btn btn-success btn-add" data-target="#Category-add" data-toggle="modal">Thêm mới</a>
 {{--  --}}<div>
 <h4>Danh Sách Chuyên Mục</h4>
+<a href="" class="btn btn-success btn-add" data-target="#Category-add" data-toggle="modal">Thêm mới</a>
+<p></p>
 <div class="row">
   <div class="col-8"></div>
   <div class="col-4">
-    <input type="text" placeholder="Tìm Kiếm,..." class="form-control">
+    <input type="text" id="search-cate" name="search" placeholder="Tìm Kiếm,..." class="form-control">
     <br>
   </div>
 </div>
-    <table class="table">
+    <table class="table" id="table-cate">
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Chủ Đề</th>
-            <th scope="col" colspan="2">Chức Năng</th>
+            <th scope="col">Chuyên Mục</th>
+            <th scope="col" colspan="3">Chức Năng</th>
           </tr>
         </thead>
         <tbody>
@@ -23,7 +24,7 @@
           <tr>
             <th scope="row">{{$item['CateId']}}</th>
             <td>{{$item['CateName']}}</td>
-            <td><button  data-url="{{route('Category.show',$item['CateId'])}}" type="button" class="btn btn-warning">Chi Tiết</button></td>
+            <td><button  data-url="{{route('Category.show',$item['CateId'])}}" type="button" class="btn btn-warning btn-show" data-target="#Category-show" data-toggle="modal">Chi Tiết</button></td>
             <td><button data-url="{{route('Category.edit',$item['CateId'])}}" type="button" class="btn btn-success btn-edit"  data-target="#Category-edit" data-toggle="modal">Chỉnh Sửa</button></td>
           <td><button data-url="{{route('Category.delete',$item['CateId'])}}" type="button" class="btn btn-primary btn-del">Xoá</button></td>
           </tr>
@@ -61,6 +62,7 @@
     </script>
     @include('Category.addCategory')
     @include('Category.editCategory')
+    @include('Category.detailCategory')
     <script type="text/javascript">
       $(document).ready(function(){
         $('#form-add').submit(function(e){
@@ -80,6 +82,19 @@
               },500);
             },
             error:function(jqXHR,textStatus,errorThrown){
+            }
+          })
+        })
+        //show
+        $('.btn-show').click(function(){
+          var url = $(this).attr('data-url');
+          $.ajax({
+            type:'get',
+            url:url,
+            success: function(response){
+              console.log(response)
+              $('h2#CateId').text(response.data[0].CateId)
+              $('h2#CateName').text(response.data[0].CateName)
             }
           })
         })
@@ -136,7 +151,11 @@
             })
           }
         })
+        //search
+        $("#search-cate").keyup(function(){
+          $("tr:gt(0)",$("#table-cate")).hide();
+          $("tr:gt(0):contains('"+this.value+"')",$("#table-cate")).show();
+        })
       })
-      
     </script>
 @endsection
