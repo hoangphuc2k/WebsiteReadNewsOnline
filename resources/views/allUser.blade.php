@@ -25,10 +25,13 @@
           @foreach ($Data as $item) 
           <tr>
           <th scope="row">{{$item['Username']}}</th>
-            <td>{{$item['Password']}}</td>
-            <td>{{$item['RoleCode_FK']}}</td>
+            <td>{{$item['password']}}</td>
+            @php
+                $list = App\User::find($item['id'])->role;
+            @endphp
+            <td>{{$list['RoleName']}}</td>
             <td>{{$item['FullName']}}</td>
-            <td>{{$item['Email']}}</td>
+            <td>{{$item['email']}}</td>
             <td>{{$item['Munlog']}}</td>
             <td><button type="button" class="btn btn-success">Chỉnh Sửa</button></td>
             <td><button type="button" class="btn btn-danger">Khóa Tài Khoản</button></td>

@@ -18,10 +18,10 @@
         <tbody>
           @foreach ($Data as $item)
           <tr>
-              <th scope="row">{{$item['Usermember']}}</th>
+              <th scope="row">{{$item['Usemember']}}</th>
               <td>{{$item['Password']}}</td>
               <td>{{$item['Email']}}</td>
-              <td>{{$item['Fullname']}}</td>
+              <td>{{$item['FullName']}}</td>
               <td><button type="button" class="btn btn-success">Duyệt</button></td>
               <th><button type="button" class="btn btn-danger">Không duyệt</button></th>
               <td><button type="button" class="btn btn-warning">Chỉnh Sửa</button></td>
