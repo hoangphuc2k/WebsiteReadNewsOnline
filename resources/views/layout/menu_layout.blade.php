@@ -102,20 +102,25 @@
                     <div class="right__content">
                         <div class="right__title">Báo Mới 404</div>
                             <p class="right__desc">Bảng điều khiển</p>
+                            @php
+                                $countNews = count(App\News::where('Status','=','Yes')->get());
+                                $countCategory = count(App\Category::where('Status','=','Yes')->get());
+                                $countComment = count(App\Comment::where('Status','=','Yes')->get());
+                            @endphp
                             <div class="right__cards">
-                                <a class="right__card" href="{{URL::to('allpost')}}">
+                                <a class="right__card" href="{{route('News.index')}}">
                                     <div class="right__cardTitle">Tất Cả Bài Viết</div>
-                                    <div class="right__cardNumber">72</div>
+                                    <div class="right__cardNumber">{{$countNews}}</div>
                                     <div class="right__cardDesc">Xem Chi Tiết <img src="assets/arrow-right.svg" alt=""></div>
                                 </a>
                                 <a class="right__card" href="{{URL::to('alltag')}}">
                                     <div class="right__cardTitle">Chuyên Mục</div>
-                                    <div class="right__cardNumber">12</div>
+                                    <div class="right__cardNumber">{{$countCategory}}</div>
                                     <div class="right__cardDesc">Xem Chi Tiết <img src="assets/arrow-right.svg" alt=""></div>
                                 </a>
                                 <a class="right__card" href="{{URL::to('allpost')}}">
                                     <div class="right__cardTitle">Bình Luận</div>
-                                    <div class="right__cardNumber">4</div>
+                                    <div class="right__cardNumber">{{$countComment}}</div>
                                     <div class="right__cardDesc">Xem Chi Tiết <img src="assets/arrow-right.svg" alt=""></div>
                                 </a>
                                 <a class="right__card" href="{{URL::to('allpost')}}">

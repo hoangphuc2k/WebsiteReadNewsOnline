@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -12,12 +12,12 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="Username" type="text" class="form-control @error('email') is-invalid @enderror" name="Username" value="{{ old('Username') }}" required autocomplete="Username" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                @error('Username')
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -70,4 +70,69 @@
         </div>
     </div>
 </div>
+@endsection --}}
+
+
+@extends('layout.login_layout')
+	@section('content')
+		
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="images/img-01.png" alt="IMG">
+				</div>
+
+                <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
+                    @csrf
+					<span class="login100-form-title">
+						Đăng Nhập
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Vui lòng nhập tài khoản">
+                        <input id="Username" type="type" class="form-control input100 @error('Username') is-invalid @enderror" name="Username" value="{{ old('Username') }}" required autocomplete="Username" autofocus>
+                        
+                        <span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Vui lòng nhập mật khẩu">
+						<input class="input100" type="password" name="password" placeholder="Mật Khẩu" value="{{ old('password') }}">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" type="submit">
+							Đăng Nhập
+						</button>
+					</div>
+
+					<div class="text-center p-t-12">
+						<span class="txt1">
+							Quên
+						</span>
+						<a class="txt2" href="#">
+							Tài Khoản / Mật Khẩu?
+						</a>
+					</div>
+                    <hr>
+
+                    <div class="container-login100-form-btn">
+                    <a href="{{route('register')}}">
+                            <button class="login100-form-btn btn btn-info" style="background-color: #5c26ff" type="button">
+                                Đăng Kí Tài Khoản
+                            </button>
+                        </a>
+                    </div>
+					
+                </form>
+                
+			</div>
+		</div>
+	</div>
 @endsection
