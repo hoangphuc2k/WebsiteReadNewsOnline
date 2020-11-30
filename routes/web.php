@@ -70,7 +70,8 @@ Route::prefix('Role')->group(function(){
     Route::post('store','RolesController@store')->name('Roles.store');
     Route::get('show/{id}','RolesController@show')->name('Roles.show');
     Route::get('edit/{id}','RolesController@edit')->name('Roles.edit');
-    Route::put('update','RolesController@update')->name('Roles.update');
+    Route::PATCH('update/{id}','RolesController@update')->name('Roles.update');
+    Route::DELETE('delete/{id}','RolesController@destroy')->name('Roles.delete');
 });
 Route::get('Login',function(){
     return view('login');

@@ -65,6 +65,7 @@
     @include('Category.detailCategory')
     <script type="text/javascript">
       $(document).ready(function(){
+        //add
         $('#form-add').submit(function(e){
           e.preventDefault();
           var url = $(this).attr('data-url');

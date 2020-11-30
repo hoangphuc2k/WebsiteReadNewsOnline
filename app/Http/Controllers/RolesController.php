@@ -20,7 +20,7 @@ class RolesController extends Controller
     {
         //
         $listRole['Data'] = Roles::where('Status','=','Yes')->get();
-        return view('allRoles',$listRole);
+        return view('Roles.allRoles',$listRole);
     }
 
     /**
@@ -31,7 +31,7 @@ class RolesController extends Controller
     public function create()
     {
         //
-        return view('addRoles');
+        return view('Roles.addRoles');
     }
 
     /**
@@ -45,7 +45,7 @@ class RolesController extends Controller
         //
         $data = $request->all();
         $roles = Roles::create($data);
-        return redirect()->route('Roles.index');
+        return response()->json(['data'=>$roles],200);
     }
 
     /**
@@ -56,7 +56,8 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        //
+        $Roles= Roles::where('RoleCode','=',$id)->get();
+        return response()->json(['data'=>$Roles],200);
     }
 
     /**
@@ -68,6 +69,8 @@ class RolesController extends Controller
     public function edit($id)
     {
         //
+        $Roles= Roles::where('RoleCode','=',$id)->where('Status','=','Yes')->get();
+        return response()->json(['data'=>$Roles],200);
     }
 
     /**
@@ -80,6 +83,8 @@ class RolesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $Role = Roles::where('RoleCode','=',$id)->update(['RoleName'=>$request->RoleName]);
+        return response()->json(['data'=>$Role],200);
     }
 
     /**
@@ -91,5 +96,7 @@ class RolesController extends Controller
     public function destroy($id)
     {
         //
+        $Role = Roles::where('RoleCode','=',$id)->update(['Status'=>'No']);
+        return response()->json(['data'=>'removed'],200);
     }
 }
