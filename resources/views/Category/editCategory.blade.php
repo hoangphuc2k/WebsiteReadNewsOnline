@@ -7,7 +7,7 @@
         <div class="modal-header">
           
           <h4 class="modal-title">Chỉnh Sửa Chuyên Mục</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="close btn-exit" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <form id="form-edit" data-url="" role="form" method="POST">
@@ -16,11 +16,12 @@
               <div class="form-group">
                 <label for="formGroupExampleInput">Thể Loại</label>
               <input type="text" class="form-control" id="CateName-edit" value=""  name="CateName" id="formGroupExampleInput" placeholder="Thể Loại...">
-              </div>
+              <p style="color:red" class="help is-danger textError" id="errorCateName"></p>  
+            </div>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-success">Sửa</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
+          <button type="button" class="btn btn-default btn-exit" data-dismiss="modal">Thoát</button>
         </div>
       </form>
       </div>

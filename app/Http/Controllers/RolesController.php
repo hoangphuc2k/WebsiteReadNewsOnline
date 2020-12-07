@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Roles;
+use App\Http\Requests\RolesRequest;
 
 class RolesController extends Controller
 {
@@ -40,9 +41,12 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RolesRequest $request)
     {
         //
+        // $this->validate($request, [
+        //     'RoleName' => 'bail|required|max:1000'
+        // ]);
         $data = $request->all();
         $roles = Roles::create($data);
         return response()->json(['data'=>$roles],200);
@@ -80,7 +84,7 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RolesRequest $request, $id)
     {
         //
         $Role = Roles::where('RoleCode','=',$id)->update(['RoleName'=>$request->RoleName]);

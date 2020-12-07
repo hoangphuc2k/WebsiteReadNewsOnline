@@ -7,7 +7,6 @@
 <div class="row">
   <div class="col-8"></div>
   <div class="col-4">
-    <input type="text" id="search-cate" name="search" placeholder="Tìm Kiếm,..." class="form-control">
     <br>
   </div>
 </div>
@@ -16,7 +15,10 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Chuyên Mục</th>
-            <th scope="col" colspan="3">Chức Năng</th>
+            <th scope="col">Chi Tiết</th>
+            <th scope="col">Chỉnh Sửa</th>
+            <th scope="col">Xoá</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -82,7 +84,8 @@
                 window.location.href="{{route('Category.index')}}";
               },500);
             },
-            error:function(jqXHR,textStatus,errorThrown){
+            error:function(response){
+              $('#errorCateName').text(response.responseJSON.error.CateName)
             }
           })
         })
@@ -151,11 +154,6 @@
               }
             })
           }
-        })
-        //search
-        $("#search-cate").keyup(function(){
-          $("tr:gt(0)",$("#table-cate")).hide();
-          $("tr:gt(0):contains('"+this.value+"')",$("#table-cate")).show();
         })
       })
     </script>

@@ -5,7 +5,6 @@
 <div class="row">
     <div class="col-8"></div>
     <div class="col-4">
-      <input type="text" placeholder="Tìm kiếm..." class="form-control">
       <br>
     </div>
   </div>
@@ -18,7 +17,8 @@
             <th scope="col">Tên Đầy Đủ</th>
             <th scope="col">Email</th>
             <th scope="col">Lần Đăng Nhập Cuối</th>
-            <th scope="col" colspan="2">Chức Năng</th>
+            <th scope="col">Chỉnh Sửa</th>
+            <th scope="col">Khoá Tài Khoản</th>
           </tr>
         </thead>
         <tbody>

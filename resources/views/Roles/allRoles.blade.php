@@ -6,7 +6,6 @@
 <div class="row">
     <div class="col-8"></div>
     <div class="col-4">
-      <input type="text" id="Search-roles" placeholder="Tìm kiếm..." class="form-control">
       <br>
     </div>
   </div>
@@ -14,8 +13,10 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Tên Quyền</th>
-            <th scope="col" colspan="3">Chức Năng</th>
+            <th scope="col">Chuyên Mục</th>
+            <th scope="col">Chi Tiết</th>
+            <th scope="col">Chỉnh Sửa</th>
+            <th scope="col">Xoá</th>
           </tr>
         </thead>
         <tbody>
@@ -67,6 +68,10 @@
     @include('Roles.detailRoles')
     <script type="text/javascript">
       $(document).ready(function(){
+        $('.btn-exit').click(function(e){
+            e.preventDefault();
+            $('.textError').text(" ");
+        })  
         $('#form-add').submit(function(e){
           e.preventDefault();
           var url = $(this).attr('data-url');
@@ -83,7 +88,9 @@
                 window.location.href = '{{route('Roles.index')}}';  
               },500);
             },
-            error:function(jqXHR,textStatus,errorThrown){}
+            error:function(response){
+              $('#errorRolesName').text(response.responseJSON.errors.RoleName)
+            }
           })
         })
         //edit
@@ -118,7 +125,9 @@
                 window.location.href = '{{route('Roles.index')}}';  
               },500);
             },
-            error:function(jqXHR,textStatus,errorThrown){}
+            error:function(response){
+              $('#errorRolesName').text(response.responseJSON.errors.RoleName)
+            }
           })
         })
         //show
@@ -147,11 +156,6 @@
               error: function(error){}
             })
           }
-        })
-        //search
-        $('#Search-roles').keyup(function(){
-          $("tr:gt(0)",$('#table-roles')).hide();
-          $("tr:gt(0):contains('"+this.value+"')",$('#table-roles')).show();
         })
       })
     </script>

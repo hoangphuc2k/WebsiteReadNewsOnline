@@ -5,7 +5,6 @@
 <div class="row">
   <div class="col-8"></div>
   <div class="col-4">
-    <input type="text" placeholder="Tiêu đề, tác giả,..." class="form-control">
     <br>
   </div>
 </div>
@@ -16,7 +15,10 @@
             <th scope="col">Tiêu Đề</th>
             <th scope="col">Nội Dung</th>
             <th scope="col">Tác Giả</th>
-            <th scope="col" colspan="4">Chức năng</th>
+            <th scope="col">Duyệt</th>
+            <th scope="col">Không Duyệt</th>
+            <th scope="col">Chỉnh Sửa</th>
+            <th scope="col">Xoá</th>
           </tr>
         </thead>
         <tbody>
@@ -27,7 +29,7 @@
               <td>{!!$item['Content']!!}</td>
               <td>{{$item['Author']}}</td>
               <td><button type="button" class="btn btn-success">Duyệt</button></td>
-              <th><button type="button" class="btn btn-danger">Không duyệt</button></th>
+              <th><button type="button" class="btn btn-danger">Không Duyệt</button></th>
               <td><button type="button" class="btn btn-warning">Chỉnh Sửa</button></td>
               <td><button type="button" class="btn .btn-primary">Xoá</button></td>
           </tr>
