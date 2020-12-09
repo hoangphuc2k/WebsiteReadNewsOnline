@@ -23,6 +23,5 @@
                 <div class="right__cardNumber">72</div>
                 <div class="right__cardDesc">Xem Chi Tiết <img src="assets/arrow-right.svg" alt=""></div>
             </a>
-        
 </div>
 @endsection

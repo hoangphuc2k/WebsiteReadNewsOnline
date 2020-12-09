@@ -1,28 +1,26 @@
-
-<div id="Category-add" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        
-        <h4 class="modal-title">Thêm Chuyên Mục</h4>
-        <button type="button" class="close btn-exit" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form id="form-add" data-url="{{route('Category.store')}}" role="form" action="" method="POST">
-          @csrf
-            <div class="form-group">
-              <label for="formGroupExampleInput">Thể Loại</label>
-              <input type="text" class="form-control" id="CateName-add" name="CateName" id="formGroupExampleInput" placeholder="Thể Loại...">
-                <p style="color:red" class="help is-danger textError" id="errorCateName"></p>
-            </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Thêm</button>
-        <button type="button" class="btn btn-default btn-exit" data-dismiss="modal">Thoát</button>
-      </div>
-    </form>
+@if (Auth::user()->RoleCode_FK != 1)
+  @php
+      return;
+  @endphp
+@endif
+@extends('layout.menu_layout')
+@section('content')
+<form action="{{route('Category.store')}}" method="POST">
+  @csrf
+    <h3>THÊM CHUYÊN MỤC</h3>
+    <div class="form-group">
+      <label for="formGroupExampleInput">Tên chuyên mục</label>
+      <input type="text"  class="form-control @error('CateName') is-invalid @enderror" value="{{ old('CateName') }}" name="CateName" required id="formGroupExampleInput" autocomplete="CateName" placeholder="Chuyên mục...">  
+      @error('CateName')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
-  </div>
-</div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4"><button type="submit" class="btn btn-success">Thêm</button></div>
+        <div class="col-4"></div>
+    </div>
+  </form>
+@endsection

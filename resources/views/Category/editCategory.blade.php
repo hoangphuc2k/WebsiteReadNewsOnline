@@ -1,29 +1,26 @@
-
-<div id="Category-edit" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-  
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          
-          <h4 class="modal-title">Chỉnh Sửa Chuyên Mục</h4>
-          <button type="button" class="close btn-exit" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <form id="form-edit" data-url="" role="form" method="POST">
-            @method('PATCH')
-            @csrf
-              <div class="form-group">
-                <label for="formGroupExampleInput">Thể Loại</label>
-              <input type="text" class="form-control" id="CateName-edit" value=""  name="CateName" id="formGroupExampleInput" placeholder="Thể Loại...">
-              <p style="color:red" class="help is-danger textError" id="errorCateName"></p>  
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Sửa</button>
-          <button type="button" class="btn btn-default btn-exit" data-dismiss="modal">Thoát</button>
-        </div>
-      </form>
-      </div>
+@if (Auth::user()->RoleCode_FK != 1)
+  @php
+      return;
+  @endphp
+@endif
+@extends('layout.menu_layout')
+@section('content')
+<form action="{{route('Roles.update',$data[0]['CateId'])}}" method="POST">
+  @csrf
+    <h3>THÊM CHUYÊN MỤC</h3>
+    <div class="form-group">
+      <label for="formGroupExampleInput">Tên chuyên mục</label>
+      <input type="text"  class="form-control @error('CateName') is-invalid @enderror" value="{{$data[0]['CateName']}}" name="CateName" required id="formGroupExampleInput" autocomplete="CateName" placeholder="Chuyên mục...">  
+      @error('CateName')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
-  </div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4"><button type="submit" class="btn btn-success">Thêm</button></div>
+        <div class="col-4"></div>
+    </div>
+  </form>
+@endsection

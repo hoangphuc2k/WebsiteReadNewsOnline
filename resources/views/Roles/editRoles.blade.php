@@ -1,29 +1,22 @@
-
-  <!-- Modal -->
-  <div id="Roles-edit" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-  
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Chỉnh Sửa Quyền</h4>
-          <button type="button" class="close btn-exit" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-        <form data-url="" id="form-edit" method="POST">
-            @method('PATCH')
-            @csrf
-              <div class="form-group">
-                <label for="formGroupExampleInput">QUYỀN</label>
-                <input type="text" class="form-control" name="RoleName" value="" id="RoleName-edit" ss id="formGroupExampleInput" placeholder="QUYỀN...">
-                <p style="color:red" class="help is-danger textError" id="errorRolesName"></p>
-              </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Sửa</button>
-          <button type="button" class="btn btn-default btn-exit" data-dismiss="modal">Thoát</button>
-        </div>
-      </form>
-      </div>
+@extends('layout.menu_layout')
+@section('content')
+<form action="{{route('Roles.update',$data[0]['RoleCode'])}}" method="POST">
+  @method('PATCH')
+  @csrf
+    <h3>CHỈNH SỬA QUYỀN</h3>
+    <div class="form-group">
+      <label for="formGroupExampleInput">Tên quyền</label>
+      <input type="text"  class="form-control @error('RoleName') is-invalid @enderror" value="{{$data[0]['RoleName']}}" name="RoleName" required id="formGroupExampleInput" autocomplete="RoleName" placeholder="QUYỀN...">  
+      @error('RoleName')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </div>
-  </div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4"><button type="submit" class="btn btn-success">Lưu</button></div>
+        <div class="col-4"></div>
+    </div>
+  </form>
+@endsection

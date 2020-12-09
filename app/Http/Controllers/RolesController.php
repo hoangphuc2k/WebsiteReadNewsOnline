@@ -44,12 +44,9 @@ class RolesController extends Controller
     public function store(RolesRequest $request)
     {
         //
-        // $this->validate($request, [
-        //     'RoleName' => 'bail|required|max:1000'
-        // ]);
         $data = $request->all();
         $roles = Roles::create($data);
-        return response()->json(['data'=>$roles],200);
+        return redirect()->route('Roles.index');
     }
 
     /**
@@ -60,8 +57,8 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        $Roles= Roles::where('RoleCode','=',$id)->get();
-        return response()->json(['data'=>$Roles],200);
+        $Roles['data'] = Roles::where('RoleCode','=',$id)->where('Status','=','Yes')->get();
+        return view('Roles.detailRoles',$Roles);
     }
 
     /**
@@ -73,8 +70,8 @@ class RolesController extends Controller
     public function edit($id)
     {
         //
-        $Roles= Roles::where('RoleCode','=',$id)->where('Status','=','Yes')->get();
-        return response()->json(['data'=>$Roles],200);
+        $Roles['data'] = Roles::where('RoleCode','=',$id)->where('Status','=','Yes')->get();
+        return view('Roles.editRoles',$Roles);
     }
 
     /**
@@ -88,7 +85,7 @@ class RolesController extends Controller
     {
         //
         $Role = Roles::where('RoleCode','=',$id)->update(['RoleName'=>$request->RoleName]);
-        return response()->json(['data'=>$Role],200);
+        return redirect()->route('Roles.index');
     }
 
     /**
@@ -101,6 +98,6 @@ class RolesController extends Controller
     {
         //
         $Role = Roles::where('RoleCode','=',$id)->update(['Status'=>'No']);
-        return response()->json(['data'=>'removed'],200);
+        return redirect()->route('Roles.index');
     }
 }

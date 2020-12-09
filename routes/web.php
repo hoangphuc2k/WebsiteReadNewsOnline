@@ -73,6 +73,8 @@ Route::prefix('Role')->group(function(){
     Route::PATCH('update/{id}','RolesController@update')->name('Roles.update');
     Route::DELETE('delete/{id}','RolesController@destroy')->name('Roles.delete');
 });
+
+
 Route::get('Login',function(){
     return view('login');
 })->name('Login');

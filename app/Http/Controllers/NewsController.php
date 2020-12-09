@@ -22,7 +22,9 @@ class NewsController extends Controller
     {
         //
         $ListNews['Data'] = News::all();
-        return view('allNews',$ListNews);
+        $item['Cate'] = Category::all();
+        $itemUse['User'] =  User::all(); 
+        return view('News.allNews',$ListNews,$item,$itemUse);
     }
 
     /**
@@ -49,7 +51,7 @@ class NewsController extends Controller
         //
         $data = $request->all();
         $news = News::create($data);
-        return redirect()->route('News.index');
+        return redirect()->route("News.index");
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -41,12 +42,12 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         //
         $data = $request->all();
         $category = Category::create($data);
-        return response()->json(['data'=>$category],200);
+        return redirect()->route('Category.index');
     }
 
     /**
@@ -58,8 +59,8 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
-        $ListCate = Category::where('CateId','=',$id)->where('Status','=','Yes')->get();
-        return response()->json(['data'=>$ListCate],200);
+        $ListCate['data'] = Category::where('CateId','=',$id)->where('Status','=','Yes')->get();
+        return view('Category.detailCategory',$ListCate);
     }
 
     /**
@@ -70,8 +71,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $ListCate = Category::where('CateId','=',$id)->where('Status','=','Yes')->get();
-        return response()->json(['data'=>$ListCate],200);
+        $ListCate['data'] = Category::where('CateId','=',$id)->where('Status','=','Yes')->get();
+        return view('Category.editCategory',$ListCate);
     }
 
     /**
@@ -81,11 +82,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(CategoryRequest $request,$id)
     {
         //
         $ListCate = Category::where('CateId','=',$id)->update(['CateName'=>$request->CateName]);
-        return response()->json(['data'=>$ListCate],200);   
+        return redirect()->route('Category.index');  
     }
 
     /**
@@ -97,6 +98,10 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $ListCate = Category::where('CateId','=',$id)->update(['Status'=>'No']);
-        return response()->json(['data'=>'removed'],200);
+        if($ListCate){
+            return redirect()->route('Category.index');
+        }else{
+            return 'ERROR';
+        }
     }
 }
