@@ -50,7 +50,9 @@ class NewsController extends Controller
     {
         //
         $data = $request->all();
+        //Luu du lieu vao csdl
         $news = News::create($data);
+        //Luu thanh cong thi hien thi tat ca bai viet
         return redirect()->route("News.index");
     }
 
@@ -99,4 +101,6 @@ class NewsController extends Controller
     {
         //
     }
+
+    
 }
