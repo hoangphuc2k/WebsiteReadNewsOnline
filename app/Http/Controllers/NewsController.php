@@ -46,15 +46,9 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
-        $request->validate([
-            'Title'=>'required|max:1000',
-            'Description'=>'required|max:1000',
-            'Author'=> 'required|max:200',
-            'Picture'=> 'required|max:1000',
-            'KeyWord'=> 'required|max:1000'
-        ]);
+       
         //
         $data = $request->all();
         $news = News::create($data);
@@ -80,7 +74,7 @@ class NewsController extends Controller
      */
     public function edit()
     {
-        //
+        //????
         return view('editpost');
     }
 
