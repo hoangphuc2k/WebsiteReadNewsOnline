@@ -49,10 +49,10 @@ class NewsController extends Controller
      */
     public function store(NewsRequest $request)
     {
-       
-        //
         $data = $request->all();
+        //Luu du lieu vao csdl
         $news = News::create($data);
+        //Luu thanh cong thi hien thi tat ca bai viet
         return redirect()->route("News.index");
     }
 
@@ -69,7 +69,7 @@ class NewsController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -101,4 +101,6 @@ class NewsController extends Controller
     {
         //
     }
+
+    
 }
