@@ -38,7 +38,6 @@ class NewsController extends Controller
         //
         $item['Cate'] = Category::all();
         $itemUse['User'] =  User::all();  
-        return view('addNews',$item,$itemUse);
         return view('News.addNews',$item,$itemUse);
     }
 
