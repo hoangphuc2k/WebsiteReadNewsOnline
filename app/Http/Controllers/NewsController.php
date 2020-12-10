@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\News;
 use App\Category;
 use App\User;
+use App\Http\Requests\NewsRequest;
 
 class NewsController extends Controller
 {
@@ -38,6 +39,7 @@ class NewsController extends Controller
         $item['Cate'] = Category::all();
         $itemUse['User'] =  User::all();  
         return view('addNews',$item,$itemUse);
+        return view('News.addNews',$item,$itemUse);
     }
 
     /**
