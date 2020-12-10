@@ -7,7 +7,7 @@
       <label for="formGroupExampleInput">Tiêu Đề</label>
       <input type="text" class="form-control @error('Title') is-invalid @enderror" name="Title" id="formGroupExampleInput" placeholder="Tiêu Đề...">
       @error('Title')
-        <div class="alert alert-danger">{{ 'Vui lòng nhập vào tiêu đề' }}</div>
+        <div class="alert alert-danger">{{ $message }}</div>
       @enderror
     </div>
     <div class="form-group">
@@ -36,28 +36,28 @@
         <label for="exampleFormControlTextarea1">Nội Dung</label>
         <textarea class="form-control editor @error('Content') is-invalid @enderror" name="Content" id="exampleFormControlTextarea1" rows="5" placeholder="Nội Dung..."></textarea>
         @error('Content')
-          <div class="alert alert-danger">{{ 'Vui lòng nhập vào nội dung' }}</div>
+          <div class="alert alert-danger">{{ $message }}</div>
         @enderror
       </div>
       <div class="form-group">
         <label for="exampleFormControlTextarea2">Mô Tả</label>
         <textarea class="form-control @error('Description') is-invalid @enderror" name="Description" id="exampleFormControlTextarea2" rows="5" placeholder="Mô Tả"></textarea>
         @error('Description')
-          <div class="alert alert-danger">{{ 'Vui lòng nhập vào mô tả' }}</div>
+          <div class="alert alert-danger">{{ $message }}</div>
         @enderror
       </div>
       <div class="form-group">
         <label for="exampleFormControlTextarea3">Từ Khoá</label>
         <textarea class="form-control @error('KeyWord') is-invalid @enderror" name="KeyWord" id="exampleFormControlTextarea3" rows="5" placeholder="Từ Khoá"></textarea>
         @error('KeyWord')
-        <div class="alert alert-danger">{{ 'Vui lòng nhập vào từ khóa' }}</div>
+        <div class="alert alert-danger">{{ $message }}</div>
       @enderror
       </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Tác Giả</label>
       <input type="text" class="form-control @error('Author') is-invalid @enderror" name="Author" id="formGroupExampleInput2" placeholder="Tác Giả...">
       @error('Author')
-        <div class="alert alert-danger">{{ 'Vui lòng nhập vào tác giả của bài viết' }}</div>
+        <div class="alert alert-danger">{{$message }}</div>
       @enderror
     </div>
     <div class="custom-file">
