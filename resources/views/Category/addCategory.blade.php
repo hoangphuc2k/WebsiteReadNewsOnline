@@ -10,12 +10,12 @@
     <h3>THÊM CHUYÊN MỤC</h3>
     <div class="form-group">
       <label for="formGroupExampleInput">Tên chuyên mục</label>
-      <input type="text"  class="form-control @error('CateName') is-invalid @enderror" value="{{ old('CateName') }}" name="CateName" required id="formGroupExampleInput" autocomplete="CateName" placeholder="Chuyên mục...">  
+      <input type="text"  class="form-control @error('CateName') is-invalid @enderror" value="{{ old('CateName')}}" name="CateName" maxlength="1000" required id="formGroupExampleInput" autocomplete="CateName" placeholder="Chuyên mục...">  
       @error('CateName')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
-        @enderror
+      @enderror
     </div>
     <div class="row">
         <div class="col-4"></div>

@@ -52,7 +52,8 @@ Route::prefix('Banner')->group(function(){
     Route::post('store','BannerController@store')->name('Banner.store');
     Route::get('show/{id}','BannerController@show')->name('Banner.show');
     Route::get('edit/{id}','BannerController@edit')->name('Banner.edit');
-    Route::put('update','BannerController@update')->name('Banner.update');
+    Route::PATCH('update','BannerController@update')->name('Banner.update');
+    Route::DELETE('delete/{id}','BannerController@destroy')->name('Banner.delete');
 });
 Route::prefix('Member')->group(function(){
     Route::get('/','MemberController@index')->name('MemBer./');
