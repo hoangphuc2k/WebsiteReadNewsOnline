@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\News;
 use App\Category;
 use App\User;
+use App\Http\Requests\NewsRequest;
 
 class NewsController extends Controller
 {
@@ -37,7 +38,7 @@ class NewsController extends Controller
         //
         $item['Cate'] = Category::all();
         $itemUse['User'] =  User::all();  
-        return view('addNews',$item,$itemUse);
+        return view('News.addNews',$item,$itemUse);
     }
 
     /**
@@ -46,16 +47,8 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
-        $request->validate([
-            'Title'=>'required|max:1000',
-            'Description'=>'required|max:1000',
-            'Author'=> 'required|max:200',
-            'Picture'=> 'required|max:1000',
-            'KeyWord'=> 'required|max:1000'
-        ]);
-        //Lay het du lieu trong bien requyest ra luu voa $data voi dang mang
         $data = $request->all();
         //Luu du lieu vao csdl
         $news = News::create($data);
@@ -76,13 +69,13 @@ class NewsController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit()
     {
-        //
+        //????
         return view('editpost');
     }
 
