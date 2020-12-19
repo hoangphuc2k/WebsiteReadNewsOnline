@@ -1,6 +1,6 @@
 @extends('layout.menu_layout')
 @section('content')
-<form action="{{route('News.store')}}" method="Post">
+<form action="{{route('News.store')}}" method="Post" enctype="multipart/form-data">
   @csrf
     <h3>THÊM BÀI MỚI</h3>
     <div class="form-group">

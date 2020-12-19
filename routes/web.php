@@ -23,8 +23,8 @@ Route::prefix('News')->group(function(){
     Route::get('create','NewsController@create')->name('News.create');
     Route::post('store','NewsController@store')->name('News.store');
     Route::get('show/{id}','NewsController@show')->name('News.show');
-    Route::get('edit/{id}','NewsController@edit')->name('News.edit');
-    Route::put('update','NewsController@update')->name('News.update');
+    Route::get('edit','NewsController@edit')->name('News.edit');
+    Route::PATCH('update/{id}','NewsController@update')->name('News.update');
 });
 Route::prefix('Category')->group(function(){
     Route::get('/','CategoryController@index')->name('Category./');

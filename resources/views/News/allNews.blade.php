@@ -31,7 +31,12 @@
               <td>{{$item['Author']}}</td>
               <td><button type="button" class="btn btn-success">Duyệt</button></td>
               <th><button type="button" class="btn btn-danger">Không Duyệt</button></th>
-              <td><button type="button" class="btn btn-warning">Chỉnh Sửa</button></td>
+              <td>
+                <form action="{{route('News.edit')}}" method="GET">
+                  @csrf
+                  <input type="text" name="id" value="{{ $item['IdNews'] }}" hidden>
+                  <button type="submit" class="btn btn-warning">Chỉnh Sửa</button></td>
+                </form>
               <td><button type="button" class="btn .btn-primary">Xoá</button></td>
           </tr>
           @endforeach

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\News;
 use App\Category;
 use App\User;
 use App\Http\Requests\NewsRequest;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -50,10 +53,21 @@ class NewsController extends Controller
     public function store(NewsRequest $request)
     {
         $data = $request->all();
+        //Luu hinh
         //Luu du lieu vao csdl
         $news = News::create($data);
+        
+        //var_dump($news);
+
+
+        if ($request->hasFile('Picture')) 
+        {
+            Storage::putFileAs('Picture', new File($request->Picture), $news->IdNews.'.jpg');
+        }
+        $news2 = News::where('IdNews',$news->IdNews)->update(['Picture'=> $news->IdNews.'.jpg']);
         //Luu thanh cong thi hien thi tat ca bai viet
         return redirect()->route("News.index");
+        
     }
 
     /**
@@ -69,14 +83,19 @@ class NewsController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Request $request)
     {
-        //????
-        return view('editpost');
+        //Lay du lieu tu csdl len de su dung
+        $BaiViet['BaiViet'] = News::where('IdNews',$request->id)->get();
+        $item['Cate'] = Category::all();
+        $itemUse['User'] =  User::all();
+        //var_dump($BaiViet['aaa']);
+        $files = Storage::files($request->Picture);
+        //return View('News.editNews',$BaiViet,$item,$itemUse,$file);
+        var_dump($file);
     }
 
     /**
@@ -88,7 +107,15 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = News::where('IdNews','=',$id)->update(
+            ['Title' => $request->Title,
+            'Content' => $request->Content,
+            'Description' => $request->Description,
+            'KeyWord' => $request->KeyWord,
+            'Author' => $request->Author,
+            'CateId_FK' => $request->CateId_FK]
+        );
+        return redirect()->route('News.index');
     }
 
     /**
