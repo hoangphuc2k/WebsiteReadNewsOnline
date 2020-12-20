@@ -83,8 +83,13 @@
           </span>
     @enderror
   </div>
+
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Hình Ảnh nè</label>
+    <img src="../storage/{{$BaiViet[0]['Picture']}}" alt="">
+  </div>
+
   <div class="custom-file">
-    <img src="{{ $BaiViet[0]['Picture'] }}" alt="sadfds">
     <label for="formGroupExampleInput3" class="custom-file-label">Hình Ảnh</label>
     <input type="file"  class="custom-file-input @error('Picture') is-invalid @enderror" value="" name="Picture"  id="formGroupExampleInput3" placeholder="Hình Đại Diện...">  
     @error('Picture')
@@ -103,6 +108,7 @@
       <div class="col-4"></div>
   </div>
 </form>
+
 @endsection
 @section('script')
 <script>ClassicEditor

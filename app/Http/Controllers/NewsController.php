@@ -56,13 +56,10 @@ class NewsController extends Controller
         //Luu hinh
         //Luu du lieu vao csdl
         $news = News::create($data);
-        
-        //var_dump($news);
-
-
+        //Luu anh vao news vua tao (cap nhap anh)
         if ($request->hasFile('Picture')) 
         {
-            Storage::putFileAs('Picture', new File($request->Picture), $news->IdNews.'.jpg');
+            Storage::putFileAs('public', new File($request->Picture), $news->IdNews.'.jpg');
         }
         $news2 = News::where('IdNews',$news->IdNews)->update(['Picture'=> $news->IdNews.'.jpg']);
         //Luu thanh cong thi hien thi tat ca bai viet
@@ -93,9 +90,7 @@ class NewsController extends Controller
         $item['Cate'] = Category::all();
         $itemUse['User'] =  User::all();
         //var_dump($BaiViet['aaa']);
-        $files = Storage::files($request->Picture);
-        //return View('News.editNews',$BaiViet,$item,$itemUse,$file);
-        var_dump($file);
+        return View('News.editNews',$BaiViet,$item,$itemUse);
     }
 
     /**
