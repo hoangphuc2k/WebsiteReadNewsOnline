@@ -59,6 +59,7 @@ class NewsController extends Controller
         //Luu anh vao news vua tao (cap nhap anh)
         if ($request->hasFile('Picture')) 
         {
+            //Luu hinh anh duoi ten ID.jpg
             Storage::putFileAs('public', new File($request->Picture), $news->IdNews.'.jpg');
         }
         $news2 = News::where('IdNews',$news->IdNews)->update(['Picture'=> $news->IdNews.'.jpg']);
@@ -100,16 +101,29 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NewsRequest $request, $id)
     {
-        $update = News::where('IdNews','=',$id)->update(
-            ['Title' => $request->Title,
-            'Content' => $request->Content,
-            'Description' => $request->Description,
-            'KeyWord' => $request->KeyWord,
-            'Author' => $request->Author,
-            'CateId_FK' => $request->CateId_FK]
+        if ($request->hasFile('Picture'))
+        {
+            var_dump($request->Picture);
+        }
+        $update = News::where('IdNews','=',$id)->updateOrCreate(
+            [
+                'Title' => $request->Title,
+                'Content' => $request->Content,
+                'Description' => $request->Description,
+                'KeyWord' => $request->KeyWord,
+                'Author' => $request->Author,
+                'CateId_FK' => $request->CateId_FK
+            ]
         );
+        // $new3 = News::where('IdNews',$id);
+        // if ($request->hasFile('Picture'))
+        // {
+        //     Storage::delete($new3->Picture);
+        //     Storage::putFileAs('public', new File($request->Picture), $news->IdNews.'x.jpg');
+        //     // $news2 = News::where('IdNews',$id)->update(['Picture'=> $news->IdNews.'x.jpg']);
+        // }
         return redirect()->route('News.index');
     }
 

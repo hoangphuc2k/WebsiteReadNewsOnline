@@ -85,19 +85,38 @@
   </div>
 
   <div class="form-group">
-    <label for="formGroupExampleInput2">Hình Ảnh nè</label>
-    <img src="../storage/{{$BaiViet[0]['Picture']}}" alt="">
+    <label for="thumbnail">Hình Ảnh</label>
+    <br>
+    <img src="../storage/{{$BaiViet[0]['Picture']}}" style="width: 18rem;" id="thumbnail">
   </div>
-
   <div class="custom-file">
-    <label for="formGroupExampleInput3" class="custom-file-label">Hình Ảnh</label>
-    <input type="file"  class="custom-file-input @error('Picture') is-invalid @enderror" value="" name="Picture"  id="formGroupExampleInput3" placeholder="Hình Đại Diện...">  
+    <label for="ful" class="custom-file-label">Hình Ảnh</label>
+    <input type="file"  class="custom-file-input @error('Picture') is-invalid @enderror" id="ful" name="Picture"  placeholder="Hình Đại Diện...">  
+    
     @error('Picture')
           <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
           </span>
     @enderror
   </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    function ReadUrl(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#thumbnail').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#ful").change(function () {
+        ReadUrl(this)
+    }
+    );
+</script>
+
   <div class="form-group">
     <input type="text" name="IdNews" hidden value="{{ $BaiViet[0]['IdNews'] }}">  
   </div>  
@@ -110,6 +129,7 @@
 </form>
 
 @endsection
+
 @section('script')
 <script>ClassicEditor
 .create( document.querySelector( '.editor' ), {
@@ -170,5 +190,6 @@
   console.warn( 'Build id: 7druuo26sl7z-8o65j7c6blw0' );
   console.error( error );
 } );
+
 </script>
 @endsection
