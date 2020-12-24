@@ -23,6 +23,17 @@ class APINewsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     */
+    public function ListNewNews()
+    {
+        $ListNews = News::where('Status','=','Yes')->orderBy('created_at','desc')->take(10)->get();
+        echo json_encode(
+            ['data'=>$ListNews]
+        );
+    }
+    /**
+     * Display a listing of the resource.
+     *
      * @return \Illuminate\Http\Response
      */
     public function detail()

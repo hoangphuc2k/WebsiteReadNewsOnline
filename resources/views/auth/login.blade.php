@@ -75,7 +75,6 @@
 
 @extends('layout.login_layout')
 	@section('content')
-		
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -90,7 +89,7 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Vui lòng nhập tài khoản">
-                        <input id="Username" type="type" class="form-control input100 @error('Username') is-invalid @enderror" name="Username" value="{{ old('Username') }}" required autocomplete="Username" autofocus>
+                        <input id="Username" type="text" class="form-control input100 @error('Username') is-invalid @enderror" name="Username" value="{{ old('Username') }}" required autocomplete="Username" autofocus>
                         
                         <span class="focus-input100"></span>
 						<span class="symbol-input100">

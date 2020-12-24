@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->bigInteger('RoleCode_FK')->unsigned();
+            $table->string('Img');
             $table->dateTime('Munlog')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('Status',3)->default('Yes');
             $table->rememberToken();

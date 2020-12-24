@@ -16,7 +16,7 @@ use App\Http\Controllers\MemberController;
 
 Route::get('/', function () {
     return view('index');
-})->middleware('auth');;
+})->middleware('auth');
 Route::prefix('News')->group(function(){
     Route::get('/','NewsController@index')->name('News./');
     Route::get('index','NewsController@index')->name('News.index');
@@ -43,7 +43,8 @@ Route::prefix('User')->group(function(){
     Route::post('store','UserController@store')->name('User.store');
     Route::get('show/{id}','UserController@show')->name('User.show');
     Route::get('edit/{id}','UserController@edit')->name('User.edit');
-    Route::put('update/','UserController@update')->name('User.update');
+    Route::patch('update/','UserController@update')->name('User.update');
+    Route::DELETE('delete/{id}','UserController@destroy')->name('User   .delete');
 });
 Route::prefix('Banner')->group(function(){
     Route::get('/','BannerController@index')->name('Banner./');
@@ -62,7 +63,8 @@ Route::prefix('Member')->group(function(){
     Route::post('store','MemberController@store')->name('MemBer.store');
     Route::get('show/{id}','MemberController@show')->name('MemBer.show');
     Route::get('edit/{id}','MemberController@edit')->name('MemBer.edit');
-    Route::put('update','MemberController@update')->name('MemBer.update');
+    Route::PATCH('update','MemberController@update')->name('MemBer.update');
+    Route::DELETE('delete/{id}','MemberController@destroy')->name('Member.delete');
 });
 Route::prefix('Role')->group(function(){
     Route::get('/','RolesController@index')->name('Roles./');
