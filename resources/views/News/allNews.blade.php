@@ -9,14 +9,13 @@
     
     </div>
     <div class="col-4">
-      <a href="{{route('News.baidaduyet')}}" class="btn btn-outline-warning">Danh Sách Bài Viết</a>
-    </div>
-    <div class="col-4">
-        <a href="{{route('News.index')}}" class="btn btn-outline-danger">Danh Sách Chờ Duyệt</a>
+        <a href="{{route('News.index')}}" class="btn btn-outline-danger">Danh Sách Bài Viết</a>
     </div>
 </div>
 <hr>
-<h2>Danh Sách Chờ Duyệt</h2>
+<h2>Danh Sách Bài Viết
+
+</h2>
 <div class="row">
   <div class="col-8"></div>
   <div class="col-4">
@@ -30,8 +29,6 @@
             <th scope="col">Tiêu Đề</th>
             <th scope="col">Nội Dung</th>
             <th scope="col">Tác Giả</th>
-            <th scope="col">Duyệt</th>
-            <th scope="col">Không Duyệt</th>
             <th scope="col">Chỉnh Sửa</th>
             <th scope="col">Xoá</th>
           </tr>
@@ -43,22 +40,7 @@
               <td>{{$item['Title']}}</td>
               <td>{!!$item['Content']!!}</td>
               <td>{{$item['Author']}}</td>
-              <td>
-                  <form action="{{route('News.duyetbai')}}">
-                    <input type="hidden" value="true" name="trangthai">
-                    <input type="hidden" value="{{$item['IdNews']}}" name="id" >
-                    <button type="submit" class="btn btn-success">Duyệt</button>
-                  </form>
-                </td>
-                <th>
-                  <form action="{{route('News.duyetbai')}}">
-                    <input type="hidden" value="false" name="trangthai">
-                    <input type="hidden" value="{{$item['IdNews']}}" name="id" >
-                    <button type="submit" class="btn btn-danger">Không Duyệt</button>
-                  </form>
-                </th>
-
-              <td>
+             <td>
                 <form action="{{route('News.edit')}}" method="GET">
                   @csrf
                   <input type="text" name="id" value="{{ $item['IdNews'] }}" hidden>

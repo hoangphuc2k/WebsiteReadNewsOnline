@@ -27,7 +27,7 @@ class NewsController extends Controller
     public function index()
     {
         //
-        $ListNews['Data'] = News::where('Status','No')->get();
+        $ListNews['Data'] = News::where('Status','Yes')->get();
         $item['Cate'] = Category::all();
         $itemUse['User'] =  User::all();
         return view('News.allNews',$ListNews,$item,$itemUse);
@@ -161,7 +161,7 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        $news = News::where('IdNews',$id)->delete();
+        $news = News::where('IdNews',$id)->update(['Status' => 'No']);
         return redirect()->route('News.index');
     }
 
