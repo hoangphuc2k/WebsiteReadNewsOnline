@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Roles;
 
@@ -21,7 +22,7 @@ class UserController extends Controller
     {
         //
         $listUser['Data'] = User::where('Status','=','Yes')->get();
-        return view('allUser',$listUser);
+        return view('User.allUser',$listUser);
     }
 
     /**
@@ -33,7 +34,7 @@ class UserController extends Controller
     {
         //
         $listRole['Data'] = Roles::where('Status','=','Yes')->get();
-        return view('addUser',$listRole);
+        return view('User.addUser',$listRole);
     }
 
     /**
@@ -45,11 +46,16 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        if($request->hasFile('Img')){
+            $file = $request->Img; 
+            var_dump($request->Img);
+        }
         $data = $request->all();
-        $data->password = Hash::make($request->input('password'));
-        var_dump($data->password);
+        $data['password'] = Hash::make($request->password);
         $user = User::create($data);
-        return redirect()->route('User.index');
+        $data['Img'] = $user->id.'.'.$file->extension();
+        $file->move('Img',$data['Img']);
+        $upuser = User::find($user->id)->update($data);
     }
 
     /**
@@ -61,6 +67,8 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user = User::find($id);
+        return view('User.detailUser',$user);
     }
 
     /**
@@ -72,6 +80,9 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $user = User::find($id); 
+        $listRoles['roles'] = Roles::all();
+        return view('User.editUser',$user,$listRoles);
     }
 
     /**

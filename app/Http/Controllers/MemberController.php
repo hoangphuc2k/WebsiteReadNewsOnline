@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\MemBer;
+use App\Http\Requests\MemberRequest;
 
 class MemberController extends Controller
 {
@@ -40,7 +41,7 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MemberRequest $request)
     {
         //
         $data = $request->all();
@@ -77,7 +78,7 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MemberRequest $request, $id)
     {
         //
     }

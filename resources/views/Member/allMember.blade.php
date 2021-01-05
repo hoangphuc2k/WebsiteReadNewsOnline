@@ -2,6 +2,7 @@
 @section('content')
 {{--  --}}<div>
 <h4>Tất cả thành viên</h4>
+<a href="{{route('Member.create')}}" class="btn btn-success btn-add" >Thêm mới</a>
 <div class="row">
   <div class="col-8"></div>
 </div>
@@ -22,10 +23,14 @@
               <td>{{$item['Password']}}</td>
               <td>{{$item['Email']}}</td>
               <td>{{$item['FullName']}}</td>
-              <td><button type="button" class="btn btn-success">Duyệt</button></td>
-              <th><button type="button" class="btn btn-danger">Không duyệt</button></th>
-              <td><button type="button" class="btn btn-warning">Chỉnh Sửa</button></td>
-              <td><button type="button" class="btn .btn-primary">Xoá</button></td>
+              <td><a href="{{route('Member.edit',$item['Usermember'])}}" class="btn btn-success">Chinh3 sua</a></td>
+              <td><a href="{{route('Member.show',$item['Usermember'])}}" class="btn btn-warning">Chi tiet</a></td>
+              <td>
+                <form action="{{route('Member.delete',$item['Usermember'])}}" method="POST" >
+                @method('delete')
+                @csrf
+                <input type="submit" value="Xoá" class="btn btn-danger">
+              </form></td>
           </tr>
           @endforeach
         </tbody>

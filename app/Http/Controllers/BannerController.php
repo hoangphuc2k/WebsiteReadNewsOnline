@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Banner;
 use Illuminate\Http\Request;
+use App\Http\Requests\BannerRequest;
 
 class BannerController extends Controller
 {
@@ -20,7 +21,7 @@ class BannerController extends Controller
     {
         //
         $ListBanner['Data'] = Banner::where('Status','=','Yes')->get();
-        return view('allBanners',$ListBanner);
+        return view('Banner.allBanners',$ListBanner);
     }
 
     /**
@@ -31,7 +32,7 @@ class BannerController extends Controller
     public function create()
     {
         //
-        return view('addBanners');
+        return view('Banner.addBanners');
     }
 
     /**
@@ -40,7 +41,7 @@ class BannerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BannerRequest $request)
     {
         //
         $data = $request->all();
@@ -68,6 +69,8 @@ class BannerController extends Controller
     public function edit($id)
     {
         //
+        $Banner['data'] = Banner::where('IdBanner','=',$id)->where('Status','=','Yes')->get();
+        return view('Banner.editBanner', $Banner);
     }
 
     /**
@@ -77,7 +80,7 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BannerRequest $request, $id)
     {
         //
     }
