@@ -17,16 +17,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('Member/','api\APIMemberController@login');
+
 Route::post('Member/SingUp','api\APIMemberController@SingUp');
 
-Route::get('News','APINewsController@index') ;
+Route::get('News','api\APINewsController@index');
 
-Route::get('Detail/{id}','api\APINewsController@detail');
-
-Route::get('news', function (){
-    return News::all();
-}) ;
+Route::get('show/{id}','api\APINewsController@show');
 
 //vi du ve api Chi Linh, viet linh tinh de do, dung xoa nha
-Route::get('/GetNewsData','api\APINewsController@index');
+Route::get('GetNewsData','api\APINewsController@index');
 

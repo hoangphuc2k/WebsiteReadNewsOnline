@@ -26,11 +26,12 @@ class APINewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function detail()
+    public function detail($id)
     {
         
-        $ListNews['Data'] = News::where('IdNews','=',$id)->where('Status','=','Yes')->get();
-        return view('detailnew',$ListNews);
+        // $ListNews['Data'] = News::where('IdNews','=',$id)->where('Status','=','Yes')->get();
+        // return $ListNews['Data'];
+        
     }
 
     /**
@@ -63,6 +64,9 @@ class APINewsController extends Controller
     public function show($id)
     {
         //
+        $ListData = News::where('IdNews',$id)->get();
+        return $ListData;
+
     }
 
     /**

@@ -91,13 +91,8 @@
   </div>
   <div class="custom-file">
     <label for="ful" class="custom-file-label">Hình Ảnh</label>
-    <input type="file"  class="custom-file-input @error('Picture') is-invalid @enderror" id="ful" name="Picture"  placeholder="Hình Đại Diện...">  
+    <input type="file"  class="custom-file-input " id="ful" name="Picture"  placeholder="Hình Đại Diện...">  
     
-    @error('Picture')
-          <span class="invalid-feedback" role="alert">
-              <strong>{{ $message }}</strong>
-          </span>
-    @enderror
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

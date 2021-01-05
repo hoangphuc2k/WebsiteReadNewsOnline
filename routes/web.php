@@ -25,6 +25,12 @@ Route::prefix('News')->group(function(){
     Route::get('show/{id}','NewsController@show')->name('News.show');
     Route::get('edit','NewsController@edit')->name('News.edit');
     Route::PATCH('update/{id}','NewsController@update')->name('News.update');
+    Route::DELETE('destroy/{id}','NewsController@destroy')->name('News.destroy');
+    Route::get('Bai-Da-Duyet','NewsController@BaiDaDuyet')->name('News.baidaduyet');
+    Route::get('Duyet-Bai','NewsController@DuyetBai')->name('News.duyetbai');
+    
+
+
 });
 Route::prefix('Category')->group(function(){
     Route::get('/','CategoryController@index')->name('Category./');

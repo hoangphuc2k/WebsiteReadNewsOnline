@@ -22,13 +22,41 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     //chua danh sach cac bai chua dc duyet
     public function index()
     {
         //
-        $ListNews['Data'] = News::all();
+        $ListNews['Data'] = News::where('Status','No')->get();
         $item['Cate'] = Category::all();
-        $itemUse['User'] =  User::all(); 
+        $itemUse['User'] =  User::all();
         return view('News.allNews',$ListNews,$item,$itemUse);
+    }
+
+    //Dung de hien thi danh sach cac bai viet da duoc duyet 
+    public function BaiDaDuyet()
+    {
+        //Khi bai da duoc duyet thi status la Yes
+        $ListNews['Data'] = News::where('Status','Yes')->get();
+        $item['Cate'] = Category::all();
+        $itemUse['User'] =  User::all();
+        return view('News.dsNews',$ListNews,$item,$itemUse);
+    }
+    //dung de xu li viec duyet bai hay khong duyet bai
+    //nhan vao $id va $trang thai
+    //true -> bai dc duyet -> status = yes
+    //false -> bai k dc duyet -> xoa bai
+    public function DuyetBai(Request $request)
+    {
+        if ($request->trangthai == 'true')
+        {
+            $update = News::where('IdNews',$request->id)->update(['Status' => 'Yes']);
+        }
+        else
+        {
+            $delete = News::where('IdNews',$request->id)->delete();
+        }
+        return redirect()->route('News.index');        
     }
 
     /**
@@ -103,11 +131,12 @@ class NewsController extends Controller
      */
     public function update(NewsRequest $request, $id)
     {
-        if ($request->hasFile('Picture'))
-        {
-            var_dump($request->Picture);
-        }
-        $update = News::where('IdNews','=',$id)->updateOrCreate(
+        //var_dump($request->Picture);
+        //Storage::putFileAs('public',$request->Picture, $id.'x.jpg');
+        // $path = Storage::putFileAs(
+        //     'public', $request->file('Picture'), $id.'x.jpg'
+        // );
+        $update = News::where('IdNews','=',$id)->update(
             [
                 'Title' => $request->Title,
                 'Content' => $request->Content,
@@ -117,16 +146,13 @@ class NewsController extends Controller
                 'CateId_FK' => $request->CateId_FK
             ]
         );
-        // $new3 = News::where('IdNews',$id);
-        // if ($request->hasFile('Picture'))
-        // {
-        //     Storage::delete($new3->Picture);
-        //     Storage::putFileAs('public', new File($request->Picture), $news->IdNews.'x.jpg');
-        //     // $news2 = News::where('IdNews',$id)->update(['Picture'=> $news->IdNews.'x.jpg']);
-        // }
+    
+      //  if ($request->hasFile('Picture'))
+            //Storage::delete($new3->Picture);
+            //Storage::putFileAs('public', new File($request->Picture),$id.'x.jpg');
+            // $news2 = News::where('IdNews',$id)->update(['Picture'=> $news->IdNews.'x.jpg']);
         return redirect()->route('News.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -135,7 +161,8 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $news = News::where('IdNews',$id)->delete();
+        return redirect()->route('News.index');
     }
 
     

@@ -37,6 +37,7 @@
                                     <div class="left__text">
                                         <a class="left__link" href="{{route('News.index')}}">Tất Cả Bài Viết</a>
                                         <a class="left__link" href="{{route('News.create')}}">Thêm Bài Viết</a>
+
                                     </div>
                                 </li>
                             @else @if (Auth::user()->RoleCode_FK == 1)
