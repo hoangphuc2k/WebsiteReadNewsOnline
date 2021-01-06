@@ -25,7 +25,7 @@ class APIMemberController extends Controller
      */
     public function login(Request $request)
     {
-        member = $request->Username;
+        $member = $request->Username;
         $pass = $request->Password;
         $list = Member::where('Usemember','=',$member)->where('Password','=',$pass)->get();
         echo json_encode(
