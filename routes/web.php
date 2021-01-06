@@ -82,6 +82,16 @@ Route::prefix('Role')->group(function(){
     Route::PATCH('update/{id}','RolesController@update')->name('Roles.update');
     Route::DELETE('delete/{id}','RolesController@destroy')->name('Roles.delete');
 });
+Route::prefix('Comment')->group(function(){
+    Route::get('/','CommentController@index')->name('Comment./');
+    Route::get('index','CommentController@index')->name('Comment.index');
+    Route::get('create','CommentController@create')->name('Comment.create');
+    Route::post('store','CommentController@store')->name('Comment.store');
+    Route::get('show/{id}','CommentController@show')->name('Comment.show');
+    Route::get('edit/{id}','CommentController@edit')->name('Comment.edit');
+    Route::PATCH('update/{id}','CommentController@update')->name('Comment.update');
+    Route::DELETE('delete/{id}','CommentController@destroy')->name('Comment.delete');
+});
 
 
 Route::get('Login',function(){

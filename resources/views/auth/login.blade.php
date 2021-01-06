@@ -87,11 +87,6 @@
 					<span class="login100-form-title">
 						Đăng Nhập
                     </span>
-                    @error('Username')
-							<span class="invalid-feedback" role="alert">
-								<strong>{{ $message }}</strong>
-							</span>
-      				@enderror
 
 					<div class="wrap-input100 validate-input" data-validate = "Vui lòng nhập tài khoản">
                         <input id="Username" type="text" class="form-control input100 @error('Username') is-invalid @enderror" name="Username" value="{{ old('Username') }}" required autocomplete="Username" autofocus>
@@ -99,7 +94,12 @@
                         <span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
+                        </span>
+                        @error('Username')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+      				    @enderror
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Vui lòng nhập mật khẩu">

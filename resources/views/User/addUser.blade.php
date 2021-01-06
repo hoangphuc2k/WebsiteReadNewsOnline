@@ -6,14 +6,29 @@
     <div class="form-group">
       <label for="formGroupExampleInput">UserName</label>
       <input type="text" class="form-control" name="Username" id="formGroupExampleInput" placeholder="Thể Loại...">
+      @error('Username')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+      @enderror
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput">PassWord</label>
       <input type="text" class="form-control" name="password" id="formGroupExampleInput" placeholder="Thể Loại...">
+      @error('password')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+      @enderror
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput">Tên Đầy Đủ</label>
       <input type="text" class="form-control" name="FullName" id="formGroupExampleInput" placeholder="Thể Loại...">
+      @error('FullName')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+      @enderror
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput">Quyền</label>
@@ -26,14 +41,29 @@
           @endforeach
         </select>
       </div>
+      @error('RoleCode_FK')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+      @enderror
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput">Email</label>
       <input type="text" class="form-control" name="email" id="formGroupExampleInput" placeholder="Thể Loại...">
+      @error('email')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+      @enderror
     </div>
     <div class="custom-control">
       <label class="custom-file-label">Hình đại diện</label>
       <input type="file" id="Img" class="custom-file-input" name="Img" placeholder="Hình đại diện...">
+      @error('Img')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+      @enderror
     </div>
     <div class="form-group">
       <img src="{{public_path()}}/" class="w-75" id="imgPres" alt="Img" aceept="*.JPG|*.PNG" />

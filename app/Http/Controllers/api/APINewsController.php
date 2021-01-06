@@ -25,7 +25,7 @@ class APINewsController extends Controller
      * Display a listing of the resource.
      *
      */
-    public function ListNewNews()
+    public function ListHotNews()
     {
         $ListNews = News::where('Status','=','Yes')->orderBy('created_at','desc')->take(10)->get();
         echo json_encode(

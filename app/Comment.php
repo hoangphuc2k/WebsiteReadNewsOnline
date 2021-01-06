@@ -8,4 +8,6 @@ class Comment extends Model
 {
     //
     protected $table = 'comments';
+
+    protected $fillable = ['IdNews_FK','Title','Context','Usemember_FK','Status'];
 }

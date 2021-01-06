@@ -73,6 +73,12 @@
                                 </div>
                             </li>
                             <li class="left__menuItem">
+                                <div class="left__title"><img src="../../assets/icon-book.svg" alt="">Bình Luận<img class="left__iconDown" src="../../assets/arrow-down.svg" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" href="{{route('Comment.index')}}">Quản Lí Bình Luận</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
                                 <div class="left__title"><img src="../../assets/icon-edit.svg" alt="">Banner<img class="left__iconDown" src="../../assets/arrow-down.svg" alt=""></div>
                                 <div class="left__text">
                                     <a class="left__link" href="{{route('Banner.index')}}">Tất Cả Banner</a>

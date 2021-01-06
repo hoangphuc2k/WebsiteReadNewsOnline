@@ -20,6 +20,10 @@ Route::post('Member/','api\APIMemberController@login');
 
 Route::post('Member/SingUp','api\APIMemberController@SingUp');
 
+Route::get('News/ListHotNews','api\APINewsController@ListHotNews');
+
+Route::get('Detail/{id}','api\APINewController@detail');
+
 Route::get('News','api\APINewsController@index');
 
 Route::get('show/{id}','api\APINewsController@show');

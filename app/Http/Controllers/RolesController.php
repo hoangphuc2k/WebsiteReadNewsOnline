@@ -46,7 +46,11 @@ class RolesController extends Controller
         //
         $data = $request->all();
         $roles = Roles::create($data);
-        return redirect()->route('Roles.index');
+        if($roles){
+            return redirect()->route('Roles.index');
+        }else{
+            return view('Roles.addRoles');
+        }
     }
 
     /**
