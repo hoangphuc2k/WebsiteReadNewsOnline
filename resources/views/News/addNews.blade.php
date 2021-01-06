@@ -1,6 +1,6 @@
 @extends('layout.menu_layout')
 @section('content')
-<form action="{{route('News.store')}}" method="Post">
+<form action="{{route('News.store')}}" method="Post" enctype="multipart/form-data">
   @csrf
     <h3>THÊM BÀI MỚI</h3>
     <div class="form-group">
@@ -60,6 +60,11 @@
         <div class="alert alert-danger">{{ $message }}</div>
       @enderror
     </div>
+    <div class="form-group">
+      <label for="thumbnail">Hình Ảnh</label>
+      <br>
+      <img src="" style="width: 18rem;" id="thumbnail">
+    </div>
     <div class="custom-file">
       <label for="formGroupExampleInput3" class="custom-file-label">Hình Đại Diện</label>
       <input type="file" class="custom-file-input " name="Picture" id="formGroupExampleInput3" placeholder="Hình Đại Diện">
@@ -68,6 +73,22 @@
         @error('Picture')
        <div class="alert alert-danger">{{ 'Vui lòng tải lên hình đại diện' }}</div>
       @enderror --}}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    function ReadUrl(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#thumbnail').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#formGroupExampleInput3").change(function () {
+        ReadUrl(this)
+    }
+    );
+</script>
     </div>
     <p></p>
     <div class="row">

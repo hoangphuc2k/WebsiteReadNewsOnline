@@ -24,7 +24,7 @@ class CreateNewsTable extends Migration
             $table->string('Author',200);
             $table->string('Picture',200);
             $table->bigInteger('Numread')->default(1);
-            $table->string('Status',3)->default('Yes');
+            $table->string('Status',3)->default('not');
             $table->timestamps();
         });
     }

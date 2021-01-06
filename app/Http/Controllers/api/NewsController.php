@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\News;
 
-class APINewsController extends Controller
+class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,34 +15,8 @@ class APINewsController extends Controller
      */
     public function index()
     {
-        // $ListNews = News::where('Status','=','Yes')->get();
-        // echo json_encode(
-        //     ['data'=>$ListNews]
-        // );
+        //
         return News::all();
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     */
-    public function ListNewNews()
-    {
-        $ListNews = News::where('Status','=','Yes')->orderBy('created_at','desc')->take(10)->get();
-        echo json_encode(
-            ['data'=>$ListNews]
-        );
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function detail($id)
-    {
-        
-        // $ListNews['Data'] = News::where('IdNews','=',$id)->where('Status','=','Yes')->get();
-        // return $ListNews['Data'];
-        
     }
 
     /**
@@ -75,9 +49,6 @@ class APINewsController extends Controller
     public function show($id)
     {
         //
-        $ListData = News::where('IdNews',$id)->get();
-        return $ListData;
-
     }
 
     /**
