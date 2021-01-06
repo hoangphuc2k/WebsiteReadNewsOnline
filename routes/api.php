@@ -13,12 +13,12 @@ use App\News;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+    Route::middleware('auth:api')->get('/user', function (Request $request) {
+        return $request->user();
+        });
 Route::post('Member/','api\APIMemberController@login');
-
 Route::post('Member/SingUp','api\APIMemberController@SingUp');
+<<<<<<< HEAD
 
 Route::get('News/ListHotNews','api\APINewsController@ListHotNews');
 
@@ -30,4 +30,12 @@ Route::get('show/{id}','api\APINewsController@show');
 
 //vi du ve api Chi Linh, viet linh tinh de do, dung xoa nha
 Route::get('GetNewsData','api\APINewsController@index');
+=======
+Route::get('News','APINewsController@index') ;
+Route::get('Detail/{id}','api\APINewsController@detail');
+Route::get('news', function (){
+     return News::all();
+    }) ;
+Route::get('/GetNewsData','api\APINewsController@index');
+>>>>>>> b224bb7a9e9a580e886504fd08b3cdb9786aabdb
 
