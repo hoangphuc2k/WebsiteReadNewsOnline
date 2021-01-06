@@ -26,12 +26,13 @@ class APIMemberController extends Controller
     public function login(Request $request)
     {
         //
-        $member = $request->Username;
-        $pass = $request->Password;
-        $list = Member::where('Usemember','=',$member)->where('Password','=',$pass)->get();
-        echo json_encode(
-            ['data' =>$list]
-        );
+        // $member = $request->Username;
+        // $pass = $request->Password;
+        // $list = Member::where('Usemember','=',$member)->where('Password','=',$pass)->get();
+        // echo json_encode(
+        //     ['data' =>$list]
+        // );
+        return News::all();
     }
     /**
      * Show the form for creating a new resource.
