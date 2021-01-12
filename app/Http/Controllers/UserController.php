@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 use App\User;
 use App\Roles;
 
@@ -48,13 +50,12 @@ class UserController extends Controller
         //
         if($request->hasFile('Img')){
             $file = $request->Img; 
-            var_dump($request->Img);
         }
         $data = $request->all();
         $data['password'] = Hash::make($request->password);
         $user = User::create($data);
-        $data['Img'] = $user->id.'.'.$file->extension();
-        $file->move('Img',$data['Img']);
+        $data['Img'] = $user->id.".jpg";
+        Storage::putFileAs('User', new File($file), $data['Img']);
         $upuser = User::find($user->id)->update($data);
     }
 

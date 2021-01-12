@@ -93,7 +93,6 @@ Route::prefix('Comment')->group(function(){
     Route::DELETE('delete/{id}','CommentController@destroy')->name('Comment.delete');
 });
 
-
 Route::get('Login',function(){
     return view('login');
 })->name('Login');

@@ -2,7 +2,7 @@
 @section('content')
 <form action="{{route('User.store')}}" method="POST" enctype="multipart/form-data">
   @csrf
-    <h3>THÊM THỂ LOẠI MỚI</h3>
+    <h3>THÊM TÀI KHOẢN MỚI</h3>
     <div class="form-group">
       <label for="formGroupExampleInput">UserName</label>
       <input type="text" class="form-control" name="Username" id="formGroupExampleInput" placeholder="Thể Loại...">

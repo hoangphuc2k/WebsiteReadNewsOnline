@@ -22,7 +22,7 @@
                     </span>
                     <div class="left__content">
                         <div class="left__profile">
-                            <div class="left__image"><img src="../../img/{{Auth::User()->Img}}" alt=""></div>
+                            <div class="left__image"><img src="{{storage_path('public/'.Auth::User()->Img)}}" alt=""></div>
                         <a href="/" >
                         <p class="left__name">{{Auth::user()->FullName}}</p>
                         </a>

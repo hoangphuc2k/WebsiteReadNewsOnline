@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Http\Request;
-use App\News;
+use App\News;   
 
 /*
 |--------------------------------------------------------------------------
@@ -12,8 +12,7 @@ use App\News;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-    Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
         return $request->user();
         });
 Route::post('Member/','api\APIMemberController@login');
@@ -22,7 +21,14 @@ Route::post('Member/SingUp','api\APIMemberController@SingUp');
 
 Route::get('News/ListHotNews','api\APINewsController@ListHotNews');
 
-Route::get('Detail/{id}','api\APINewController@detail');
+Route::get('News/ListSportNews','api\APINewsController@ListSportNews');
+
+Route::get('storage/{filename}', function ($filename)
+{
+    return Image::make(storage_path('public/' . $filename))->response();
+});
+
+Route::get('Detail/{id}','api\APINewsController@detail');
 
 Route::get('News','api\APINewsController@index');
 

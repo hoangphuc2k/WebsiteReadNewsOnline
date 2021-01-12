@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\News;
+use App\Category;
 
 class APINewsController extends Controller
 {
@@ -15,11 +16,13 @@ class APINewsController extends Controller
      */
     public function index()
     {
-        // $ListNews = News::where('Status','=','Yes')->get();
-        // echo json_encode(
-        //     ['data'=>$ListNews]
-        // );
-        return News::all();
+        $ListNews = News::where('Status','=','Yes')->get();
+        foreach($ListNews as $item){
+            $item['Content'] = '';
+        }
+        echo json_encode(
+            ['data'=>$ListNews]
+        );
     }
     /**
      * Display a listing of the resource.
@@ -28,6 +31,24 @@ class APINewsController extends Controller
     public function ListHotNews()
     {
         $ListNews = News::where('Status','=','Yes')->orderBy('created_at','desc')->take(10)->get();
+        foreach($ListNews as $item){
+            $item['Content'] = '';
+        }
+        echo json_encode(
+            ['data'=>$ListNews]
+        );
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     */
+    public function ListSportNews()
+    {
+        $category = Category::where([['Status','=','Yes'],['CateName','=','Thể Thao']])->first();
+        $ListNews = News::where([['Status','=','Yes'],['CateId_FK','=',$category->CateId]])->get();
+        foreach($ListNews as $item){
+            $item['Content'] = '';
+        }
         echo json_encode(
             ['data'=>$ListNews]
         );
@@ -40,8 +61,8 @@ class APINewsController extends Controller
     public function detail($id)
     {
         
-        // $ListNews['Data'] = News::where('IdNews','=',$id)->where('Status','=','Yes')->get();
-        // return $ListNews['Data'];
+        $ListNews['Data'] = News::where('IdNews','=',$id)->where('Status','=','Yes')->get();
+        return View("API.DetailNews",$ListNews);
         
     }
 
