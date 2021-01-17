@@ -120,7 +120,7 @@
 						<span class="txt1">
 							Quên
 						</span>
-						<a class="txt2" href="#">
+						<a class="txt2" href="{{route("password.request")}}">
 							Tài Khoản / Mật Khẩu?
 						</a>
 					</div>

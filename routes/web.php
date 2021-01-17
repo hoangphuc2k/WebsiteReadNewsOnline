@@ -42,6 +42,7 @@ Route::prefix('Category')->group(function(){
     Route::PATCH('update/{id}','CategoryController@update')->name('Category.update');
     Route::DELETE('delete/{id}','CategoryController@destroy')->name('Category.delete');
 });
+
 Route::prefix('User')->group(function(){
     Route::get('/','UserController@index')->name('User./');
     Route::get('index','UserController@index')->name('User.index');
@@ -49,8 +50,8 @@ Route::prefix('User')->group(function(){
     Route::post('store','UserController@store')->name('User.store');
     Route::get('show/{id}','UserController@show')->name('User.show');
     Route::get('edit/{id}','UserController@edit')->name('User.edit');
-    Route::patch('update/','UserController@update')->name('User.update');
-    Route::DELETE('delete/{id}','UserController@destroy')->name('User   .delete');
+    Route::PATCH('update/{id}','UserController@update')->name('User.update');
+    Route::DELETE('delete/{id}','UserController@destroy')->name('User.delete');
 });
 Route::prefix('Banner')->group(function(){
     Route::get('/','BannerController@index')->name('Banner./');
@@ -96,7 +97,6 @@ Route::prefix('Comment')->group(function(){
 Route::get('Login',function(){
     return view('login');
 })->name('Login');
-
 
 Auth::routes();
 

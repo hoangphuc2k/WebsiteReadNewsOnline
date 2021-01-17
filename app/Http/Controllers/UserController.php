@@ -48,15 +48,20 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        if($request->hasFile('Img')){
-            $file = $request->Img; 
-        }
         $data = $request->all();
         $data['password'] = Hash::make($request->password);
         $user = User::create($data);
-        $data['Img'] = $user->id.".jpg";
-        Storage::putFileAs('User', new File($file), $data['Img']);
-        $upuser = User::find($user->id)->update($data);
+        if($request->hasFile('Img')){
+            $data['Img'] = $user->id."user.jpg";
+            $file = $request->Img;
+            Storage::putFileAs('public', new File($file), $data['Img']);
+            $user = User::find($user->id)->update($data);
+        }
+        if($user){
+            return redirect()->route('User.index');
+        }else{
+            return view('User.addUser');
+        }
     }
 
     /**
@@ -96,6 +101,23 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = $request->all();
+        $user = User::find($id);
+        if($request->hasFile('Img')){
+            $data['Img'] = $user->id."user.jpg";
+            $file = $request->Img;
+            Storage::delete(storage_path('public/'.$data['Img']));
+            Storage::putFileAs('public', new File($file), $data['Img']);
+        }
+        $request->Img = $user->id."user.jpg";
+        $user = User::find($id)->update([
+            'Username'=> $request->Username,
+            'email' => $request->email,
+            'FullName' => $request->FullName,
+            'RoleCode_FK' => $request->RoleCode_FK,
+            'Img' => $request->Img
+        ]);
+        return redirect()->route('User.index');
     }
 
     /**
@@ -107,5 +129,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $Role = Roles::find($id)->update(['Status'=>'No']);
+        return redirect()->route('User.index');
     }
 }

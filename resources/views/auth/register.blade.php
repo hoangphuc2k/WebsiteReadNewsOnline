@@ -84,7 +84,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-6">
                                 <button type="submit" class="btn btn-success">
-                                    {{ __('Register') }}
+                                    {{ __('Đăng kí') }}
                                 </button>
                             </div>
                         </div>

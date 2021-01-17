@@ -22,7 +22,7 @@
                     </span>
                     <div class="left__content">
                         <div class="left__profile">
-                            <div class="left__image"><img src="{{storage_path('public/'.Auth::User()->Img)}}" alt=""></div>
+                            <div class="left__image"><img src="{{asset('/storage/'.Auth::user()->Img)}}" alt=""></div>
                         <a href="/" >
                         <p class="left__name">{{Auth::user()->FullName}}</p>
                         </a>
@@ -59,17 +59,15 @@
                                 </div>
                             </li>
                             <li class="left__menuItem">
-                                <div class="left__title"><img src="../../assets/icon-book.svg" alt="">Thành viên<img class="left__iconDown" src="../../assets/arrow-down.svg" alt=""></div>
+                                <div class="left__title"><img src="../../assets/icon-book.svg" alt="">Tài khoản<img class="left__iconDown" src="../../assets/arrow-down.svg" alt=""></div>
                                 <div class="left__text">
                                     <a class="left__link" href="{{route('User.index')}}">Tài Khoản thành viên</a>
-                                    <a class="left__link" href="{{route('User.create')}}">Thêm tài khoản</a>
                                 </div>
                             </li>
                             <li class="left__menuItem">
-                                <div class="left__title"><img src="../../assets/icon-book.svg" alt="">Tài Khoản<img class="left__iconDown" src="../../assets/arrow-down.svg" alt=""></div>
+                                <div class="left__title"><img src="../../assets/icon-book.svg" alt="">Bạn đọc<img class="left__iconDown" src="../../assets/arrow-down.svg" alt=""></div>
                                 <div class="left__text">
-                                    <a class="left__link" href="{{route('MemBer.index')}}">Tài Khoản Khách</a>
-                                    <a class="left__link" href="{{route('MemBer.create')}}">Thêm tài khoản</a>
+                                    <a class="left__link" href="{{route('MemBer.index')}}">Danh sách bạn đọc</a>
                                 </div>
                             </li>
                             <li class="left__menuItem">

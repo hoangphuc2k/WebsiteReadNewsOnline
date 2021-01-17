@@ -25,8 +25,11 @@ Route::get('News/ListSportNews','api\APINewsController@ListSportNews');
 
 Route::get('storage/{filename}', function ($filename)
 {
-    return Image::make(storage_path('public/' . $filename))->response();
+    return Image::make('public/' . $filename)->response();
 });
+Route::get('savenews/{id}','api\SaveNewsController@show');
+
+Route::post('save','api\SaveNewsController@store');
 
 Route::get('Detail/{id}','api\APINewsController@detail');
 

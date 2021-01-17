@@ -1,6 +1,6 @@
 @extends('layout.menu_layout')
 @section('content')
-<form action="{{route('User.update')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('User.update',$id)}}" method="POST" enctype="multipart/form-data">
   @method('PATCH')
     @csrf
     <h3>CHỈNH SỬA USER</h3>

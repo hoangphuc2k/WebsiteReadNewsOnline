@@ -3,7 +3,8 @@
 <form action="{{route('Roles.update',$data[0]['RoleCode'])}}" method="POST">
   @method('PATCH')
   @csrf
-    <h3>CHỈNH SỬA QUYỀN</h3>
+  <p></p>
+    <h3>Chỉnh sửa quyền</h3>
     <div class="form-group">
       <label for="formGroupExampleInput">Tên quyền</label>
       <input type="text"  class="form-control @error('RoleName') is-invalid @enderror" value="{{$data[0]['RoleName']}}" name="RoleName" required maxlength="1000" id="formGroupExampleInput" autocomplete="RoleName" placeholder="QUYỀN...">  

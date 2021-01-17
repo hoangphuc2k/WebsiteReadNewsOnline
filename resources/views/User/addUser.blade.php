@@ -5,7 +5,7 @@
     <h3>THÊM TÀI KHOẢN MỚI</h3>
     <div class="form-group">
       <label for="formGroupExampleInput">UserName</label>
-      <input type="text" class="form-control" name="Username" id="formGroupExampleInput" placeholder="Thể Loại...">
+      <input type="text" class="form-control" name="Username" id="formGroupExampleInput" placeholder="Tên tài khoản...">
       @error('Username')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput">PassWord</label>
-      <input type="text" class="form-control" name="password" id="formGroupExampleInput" placeholder="Thể Loại...">
+      <input type="text" class="form-control" name="password" id="formGroupExampleInput" placeholder="Mật khẩu...">
       @error('password')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -23,7 +23,7 @@
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput">Tên Đầy Đủ</label>
-      <input type="text" class="form-control" name="FullName" id="formGroupExampleInput" placeholder="Thể Loại...">
+      <input type="text" class="form-control" name="FullName" id="formGroupExampleInput" placeholder="Họ Tên...">
       @error('FullName')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -49,7 +49,7 @@
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput">Email</label>
-      <input type="text" class="form-control" name="email" id="formGroupExampleInput" placeholder="Thể Loại...">
+      <input type="text" class="form-control" name="email" id="formGroupExampleInput" placeholder="Email...">
       @error('email')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
