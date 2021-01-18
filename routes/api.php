@@ -38,5 +38,8 @@ Route::get('News','api\APINewsController@index');
 Route::get('show/{id}','api\APINewsController@show');
 
 //vi du ve api Chi Linh, viet linh tinh de do, dung xoa nha
-Route::get('GetNewsData','api\APINewsController@index');
+Route::get('Comment','api\CommentController@index');
+
+Route::get('showComment/{id}','api\CommentController@show');
+
 
