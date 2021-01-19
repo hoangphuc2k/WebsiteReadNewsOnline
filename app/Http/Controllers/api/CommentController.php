@@ -33,6 +33,17 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        $InsertComment = Comment::create($data);
+        if($InsertComment){
+            echo json_encode([
+                'savenews'=>"success"
+            ]);
+        }else{
+            echo json_encode(
+                ['savenews'=>'fail']
+            );
+        }
     }
 
     /**

@@ -42,4 +42,7 @@ Route::get('Comment','api\CommentController@index');
 
 Route::get('showComment/{id}','api\CommentController@show');
 
+Route::post('InsertComment','api\CommentController@store');
+
+
 
